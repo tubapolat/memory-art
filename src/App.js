@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import SingleCard from "./components/SingleCard";
 import { v4 as uuidv4 } from "uuid";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const cardImages = [
   { src: "/img/angel.jpg", matched: false },
@@ -93,10 +94,19 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Memory Art</h1>
-      <h5>Your Score: {score}</h5>
-      <button onClick={shuffleCards}>New Game</button>
-
+      <nav className="nav nav-pills flex-column flex-sm-row">
+        <h1 className="flex-sm-fill text-sm-center fs-3 fw-bold">Memory Art</h1>
+        <h5 className="flex-sm-fill text-sm-center fw-4">
+          Your Score: {score}
+        </h5>
+        <h5 className="flex-sm-fill text-sm-center fw-4">Turns: {turns}</h5>
+        <button
+          className="flex-sm-fill text-sm-center btn btn-light"
+          onClick={shuffleCards}
+        >
+          New Game
+        </button>
+      </nav>
       <div className="card-grid">
         {cards.map((card) => (
           <SingleCard
@@ -108,7 +118,9 @@ function App() {
           />
         ))}
       </div>
-      <p> Turns: {turns}</p>
+      <p style={{ textAlign: "center" }} className="mt-3">
+        Created by Tuba Polat
+      </p>
     </div>
   );
 }
